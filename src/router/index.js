@@ -4,6 +4,9 @@ import Registro from '@/components/registro.vue'
 import curso from '@/components/curso.vue'
 import inicio from '@/components/inicio.vue'
 import fin from '@/components/fin.vue'
+import recoveryPassword from '@/components/recoveryPassword.vue'
+import chancePassword from '@/components/chancePassword.vue'
+import dashboard from '@/components/dashboard.vue'
 
 const routes = [
     {
@@ -31,6 +34,22 @@ const routes = [
         name: 'fin',
         component: fin
     },
+    {
+        path: '/recuperar',
+        name: 'Recuperar',
+        component: recoveryPassword
+    },
+    {
+      path: '/actualizar',
+      name: 'Actualizar',
+      component: chancePassword
+    },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: dashboard
+    },
+
 ]
 
 

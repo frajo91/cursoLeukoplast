@@ -1,13 +1,8 @@
 <template>
 
 			<iframe src="/curso/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>
-<v-container class="fondo1" fluid>
-	<v-row justify="end" class="pa-1">
-		<v-btn color="#3ec7c0ff" rounded="xl" size="large" style="color: white;" @click="this.$router.push('fin')">Salir del curso</v-btn>
-	</v-row>
-	
-</v-container>
-			
+
+
  <v-dialog
       v-model="dialog"
       max-width="320"
@@ -40,7 +35,7 @@
       </v-list>
     </v-dialog>
 
-	
+
 </template>
 <script setup>
 	import axiosInstance from '@/plugins/axios';
@@ -57,11 +52,11 @@
 
 	var dialog=ref(false)
 
-	
+
 
 
 	async function progreso1(progreso) {
- 
+
       this.dialog=true;
       axiosInstance.post('progreso',progreso).then(response=>{
         console.log("Recurso creado con éxito:", response.data);

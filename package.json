@@ -8,11 +8,14 @@
   },
   "dependencies": {
     "@mdi/font": "7.0.96",
+    "@vee-validate/i18n": "^4.15.0",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
     "axios": "^1.7.2",
     "roboto-fontface": "*",
+    "vee-validate": "^4.15.0",
     "vue": "^3.4.0",
+    "vue-i18n": "^10.0.5",
     "vue-router": "^4.3.3",
     "vuetify": "^3.5.0"
   },

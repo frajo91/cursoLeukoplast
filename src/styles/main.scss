@@ -1,0 +1,14 @@
+/*@font-face {
+  font-family: 'Neo Sans Std';
+  src: url('@/assets/fonts/Neo Sans Std Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}*/
+
+
+@import url('https://fonts.cdnfonts.com/css/neo-sans-std');
+
+.v-banner-text{
+  line-height: 1.175;
+  padding-inline-end: 0 !important;
+}

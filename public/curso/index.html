@@ -143,7 +143,7 @@
      *
      * @type       {Array}
      */
-    console.log(localStorage.progreso);
+    //console.log(localStorage.progreso);
 
 
     var LMSProxySelections = [
@@ -237,7 +237,9 @@ var initProxy = function() {
 
     var LMSProxy = initProxy();
 
-    var cache = getLMSData();
+    //var cache = getLMSData();
+    var cache=(localStorage.progreso==null||localStorage.progreso=="null")? getLMSData() : assign({}, {progress: JSON.parse(localStorage.progreso)});
+    //console.log(cache);
 
     function debounce(fn, delay) {
   var timer = null;
@@ -301,13 +303,13 @@ function identity(value) {
 
 function bookmark(id) {
   var url = 'index.html#/lessons/' + id;
-  console.log("cambio de modulo: "+id);
+  //console.log("cambio de modulo: "+id);
   LMSProxy.SetBookmark(url, '');
 }
 
 function completeOut(passed, reportParam) {
   var reportType = reportParam || reporting;
-  console.log("completeOut: "+passed+" - "+reportType);
+  //console.log("completeOut: "+passed+" - "+reportType);
   if(passed) {
     switch(reportType) {
       case 'completed-incomplete':
@@ -349,7 +351,7 @@ function exit() {
 }
 
 function finish(totalProgress) {
-  console.log("finish: "+totalProgress);
+  //console.log("finish: "+totalProgress);
   if (
     quizId === null &&
     storylineId === null &&
@@ -362,7 +364,7 @@ function finish(totalProgress) {
 
 function finishQuiz(passed, score, id) {
   if (id == quizId) {
-    console.log("finishquiz: "+score+ " - "+passed);
+    //console.log("finishquiz: "+score+ " - "+passed);
     reportScore(score);
     completeOut(passed);
   }
@@ -370,7 +372,7 @@ function finishQuiz(passed, score, id) {
 
 function finishStoryline(id, passed, isQuiz, score) {
   if (id == storylineId) {
-    console.log("finishStoryline: "+score+ " - "+passed);
+    //console.log("finishStoryline: "+score+ " - "+passed);
     if (isQuiz) {
       reportScore(score);
       completeOut(passed, 'passed-failed');
@@ -517,7 +519,7 @@ function pick(keys, obj, def) {
 }
 
 function reportScore(score) {
-  console.log("reportScore: "+score);
+  //console.log("reportScore: "+score);
   var highScore = Math.max(getLMSData().score || 0, score);
   concatLMSData({ score: highScore });
 
@@ -533,7 +535,7 @@ function resolveFontPath(font) {
 }
 
 function setLessonProgress(lessonProgress) {
-  console.log("setLessonProgress: "+lessonProgress);
+  //console.log("setLessonProgress: "+lessonProgress);
   var encodeLessonProgress =
     root.Rise.encodeLessonProgress;
 
@@ -546,7 +548,7 @@ function setLessonProgress(lessonProgress) {
   );
 
   var progress = assign({}, currentProgress, { lessons: lessons });
-console.log(progress);
+//console.log(progress);
   concatLMSData({ progress: progress });
 }
 
@@ -582,12 +584,12 @@ function RegistrarProgreso(argument) {
         'Accept':'application/json'
       }
   });
-  axiosInstance.post('/progreso', {progreso:argument})
+  axiosInstance.post('/progreso', {progreso:JSON.stringify(argument)})
   .then(function (response) {
-    console.log(response);
+    console.log('avance actualizado');
   })
   .catch(function (error) {
-    console.log(error);
+    console.log('Error al guardar avance');
   });
 
 }

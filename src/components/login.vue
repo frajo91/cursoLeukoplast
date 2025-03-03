@@ -1,23 +1,25 @@
 <template>
 
-        <v-row no-gutters>
-          <v-col cols=12 sm=5 md=6 :class="smAndUp ? 'rounded-s-xl fondoimagen' : 'rounded-t-xl fondoimagen'">
-            <v-banner color="success" text="Educación sobre el cuidado de heridas en las farmacias" :stacked="false" :class="smAndUp ? 'rounded-ts-xl rounded-te-lg rounded-be-lg fondoverde w-66 text-h4 font-weight-bold' : 'rounded-t-xl fondoverde  text-h4 font-weight-bold'">
+        <v-row no-gutters style="min-height:60vh;">
+          <v-col cols=12 sm=4 md=5 lg=6 :class="smAndUp ? 'rounded-s-xl fondoimagen' : 'rounded-t-xl fondoimagen'">
+            <v-banner color="success" :text=" $t('detalleCurso.titulo')" :stacked="false" :class="{'rounded-ts-xl rounded-te-lg rounded-be-lg fondoverde w-66 text-h4 font-weight-bold': lgAndUp,
+            'rounded-ts-xl rounded-te-lg rounded-be-lg fondoverde text-h4 font-weight-bold': smAndUp,
+            'rounded-t-xl fondoverde text-h4 font-weight-bold': !lgAndUp && !smAndUp}">
             </v-banner>
           </v-col>
-          <v-col cols=12 sm=7 md=6>
-            <v-form class="pa-6">
+          <v-col cols=12 sm=8 md=7 lg=6>
+            <v-form class="pa-md-6 pa-4">
             <v-container>
-            <v-row class="m-6">
-              <v-col><h6 class="text-h5">BIENVENIDO</h6></v-col>
-              <v-col> <v-img src="@/assets/images/logo.png"></v-img></v-col>
+            <v-row >
+              <v-col cols=12 sm=6 order=2 order-sm=1><h6 class="text-h4">{{$t('login.bienvenido')}}</h6></v-col>
+              <v-col cols=12 sm=6 order=1 order-sm=2> <v-img src="@/assets/images/logo.png"></v-img></v-col>
             </v-row>
             <v-row justify="center">
               <v-col cols=12>
-                <p>A continuación ingrese sus datos para iniciar el curso:</p>
+                <p>{{$t('login.mensaje')}}</p>
               </v-col>
               <v-col cols=12>
-                <v-text-field label="USUARIO:" v-model="form.nickname" variant="underlined" :error-messages="v$.nickname.$errors.map(e => e.$message)" @blur="v$.nickname.$touch"
+                <v-text-field :label="$t('login.usuario')+':'" v-model="form.nickname" variant="underlined" :error-messages="v$.nickname.$errors.map(e => e.$message)" @blur="v$.nickname.$touch"
                   @input="v$.nickname.$touch"></v-text-field>
               </v-col>
               <v-col cols=12 >
@@ -25,7 +27,7 @@
                   v-model="form.password"
                   :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                   :type="show1 ? 'text' : 'password'"
-                  label="CONTRASEÑA:"
+                  :label="$t('login.contrasena')+':'"
                   name="password"
                   counter
                   :error-messages="v$.password.$errors.map(e => e.$message)"
@@ -40,22 +42,22 @@
                      v-model="error1"
                     density="compact"
                     :text="mensaje"
-                    title="Atención"
+                    :title="$t('api.titulo_error')"
                     type="warning"
                     closable
                   ></v-alert>
               </v-col>
               <v-col cols=12 sm=6 style="text-align: center;">
                 <v-btn color="#ff0023ff" rounded="xl" size="large" @click="login()" >
-                  INGRESAR
+                  {{$t('login.ingresar')}}
                 </v-btn>
               </v-col>
               <v-col cols=12 sm=6 style="text-align: center;">
                 <v-btn rounded="xl" size="large" class="fondoverde" @click="this.$router.push('/register')">
-                  REGISTRARSE
+                  {{$t('login.registrarse')}}
                 </v-btn>
               </v-col>
-              <v-col cols=12 style="text-align: center;" class="d-none"><a href="">¿OLVIDÓ SU CONTRASEÑA?</a></v-col>
+              <v-col cols=12 style="text-align: center;" class="ma-3"> <a @click="this.$router.push('/recuperar')">{{$t('login.olvido')}}</a></v-col>
               <v-col cols=5 align-self="center">
                 <v-img src="@/assets/images/logo2.png" width=200></v-img>
               </v-col>
@@ -106,10 +108,11 @@
   import axiosInstance from '@/plugins/axios';
   import { useRouter, useRoute } from 'vue-router'
   import { useDisplay } from 'vuetify'
+  import { useI18n } from 'vue-i18n';
 
   const router = useRouter()
   const route = useRoute()
-
+const { t } = useI18n();
    localStorage.removeItem('token');
    localStorage.removeItem('progreso');
 
@@ -128,8 +131,8 @@
   })
 
   const rules={
-    nickname:{required: helpers.withMessage('Campo requerido', required)},
-    password:{required: helpers.withMessage('Campo requerido', required),minLength: helpers.withMessage('La contraseña debe contener minimo 8 caracteres',minLength(8))}
+    nickname:{required: helpers.withMessage(t('validation.required'), required)},
+    password:{required: helpers.withMessage(t('validation.required'), required),minLength: helpers.withMessage(t('validation.min',{ length: '8' }),minLength(8))}
   }
 
    var v$ = useVuelidate(rules, form)
@@ -147,7 +150,18 @@
       axiosInstance.post('login',form).then(response=>{
         if (response.data.access_token) {
           localStorage.token=response.data.access_token;
-          router.push('/inicio');
+          if (response.data.restart==1) {
+            localStorage.changed=1;
+            router.push('/actualizar');
+          }else{
+            if (response.data.Inactivo===1) {
+              router.push('/dashboard');
+            }else{
+              router.push('/inicio');
+            }
+
+          }
+
         }
         this.dialog=false;
         console.log("Recurso creado con éxito:", response.data);
@@ -156,7 +170,7 @@
             if (error.response.data.mensaje) {
               mensaje=error.response.data.mensaje;
             }else{
-              mensaje="Error al conectarse al servidor."
+              mensaje=t('api.error');
             }
             this.error1=true;
             console.log(error1)
@@ -165,7 +179,7 @@
     });
   }
 
-  const {  smAndUp } = useDisplay()
+  const {  smAndUp,lgAndUp } = useDisplay()
 
     // Usar breakpoints para determinar la clase de border-radius
     /*const breakpointClass = computed(() => {
