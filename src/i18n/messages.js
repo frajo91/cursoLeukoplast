@@ -108,7 +108,25 @@ const messages = {
       salir:'SALIR'
     },
     dashboard:{
-      filtro:'FILTRAR POR'
+      filtro:'FILTRAR POR',
+      campo: {
+        email:'Correo electrónico',
+        nombre:'Nombre',
+        apellido:'Apellido',
+        modulo:'Módulo',
+        puntuacion:'Puntuación',
+        prueba:'prueba de conocimiento',
+        certificado:'Certificado'
+      },
+      enviar:"Enviar",
+      reenviar:"Reenviar",
+      filtro1:{
+        registrado:'Registrado',
+        finalizo:'finalizo'
+      },
+      filtro2:{
+        modulo:"Módulo "
+      }
     },
     api:{
       error:'Error al conectarse al servidor.',

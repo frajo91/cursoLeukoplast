@@ -116,4 +116,7 @@ watch(
     background-color: silver;
     width: 2px;
   }
+  th{
+    color: red;
+  }
 </style>

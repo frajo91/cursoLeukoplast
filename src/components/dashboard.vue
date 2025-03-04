@@ -16,8 +16,54 @@
               :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"></v-select>
             </v-col>
           </v-row>
-          <v-data-table :items=""></v-data-table>
+
           <v-row>
+              <v-data-table
+              v-if="!loading"
+              :headers="headers"
+              :items="informacion"
+              item-key="IDUSUARIO"
+              filter-keys="[CORREO,
+                  NOMBRE,
+                  APELLIDO,
+                  MODULOS,
+                  PORCENTAJE_PRUEBA,
+                  ESTADO_PRUEBA,
+                  ENVIO]"
+              filter-mode="some"
+              >
+              <template v-slot:item.MODULOS="{ item }">
+                <div class="text-center">
+                  <v-avatar size="x-small" class="ma-1" :color="(BuscarModulo(index,item))?'red':'grey-lighten-2'" v-for="index in niveles">
+                    {{index}}
+                  </v-avatar>
+                </div>
+
+              </template>
+              <template v-slot:item.ESTADO_PRUEBA="{ item }">
+                <div class="text-center">
+                  <v-chip
+                    :color="item.ESTADO_PRUEBA=='No registra'?'grey': item.ESTADO_PRUEBA=='Aprobada'?'green' : 'red'"
+                    :text="item.ESTADO_PRUEBA"
+                    class="text-uppercase"
+                    size="small"
+                    label
+                  ></v-chip>
+                </div>
+              </template>
+              <template v-slot:item.PORCENTAJE_PRUEBA="{ item }">
+                <div class="text-center">
+                  <p>{{item.PORCENTAJE_PRUEBA}} %</p>
+                </div>
+              </template>
+              <template v-slot:item.ENVIO="{ item }">
+                <div class="text-center">
+                  <v-btn v-if="item.ENVIO==0&&item.ESTADO_PRUEBA=='Aprobada'&&item.MODULOS.length==niveles" color="success" size="small">{{$t('dashboard.enviar')}}</v-btn>
+                  <v-btn v-if="item.ENVIO==1&&item.ESTADO_PRUEBA=='Aprobada'&&item.MODULOS.length==niveles" color="warning" size="small">{{$t('dashboard.reenviar')}}</v-btn>
+                </div>
+              </template>
+
+            </v-data-table>
            </v-row>
         </v-container>
 
@@ -33,24 +79,7 @@
  const niveles = computed(() => parseInt(t('detalleCurso.modulos')));
   const router = useRouter()
   const route = useRoute()
-  const informacion = ref({
-    APELLIDO: '',
-    CARGO: '',
-    CIUDAD: '',
-    CLIENTE: '',
-    CORREO: '',
-    ENVIO: 0,
-    ESTADO_PRUEBA: '',
-    FARMACIA: '',
-    FECHA: '',
-    IDUSUARIO: 0,
-    MODULOS: [],
-    NOMBRE: '',
-    PAIS: '',
-    PORCENTAJE_CURSO: 0,
-    PORCENTAJE_PRUEBA: 0,
-    TELEFONO: '' // Inicializamos como un array vacío
-    });
+  const informacion = ref([])
   const loading=ref(true)
   const porcentaje=ref(0)
   const progreso=ref('')
@@ -59,70 +88,33 @@
     router.push('/');
   }
 
+const  headers= [
+          { key: 'CORREO', title: t('dashboard.campo.email')},
+          { key: 'NOMBRE', title: t('dashboard.campo.nombre') },
+          { key: 'APELLIDO', title: t('dashboard.campo.apellido')},
+          { key: 'MODULOS', title: t('dashboard.campo.modulo'),align: 'center' },
+          { key: 'PORCENTAJE_PRUEBA', title:t('dashboard.campo.puntuacion'),align: 'center' },
+          { key: 'ESTADO_PRUEBA', title: t('dashboard.campo.prueba'),align: 'center',},
+          { key: 'ENVIO', title: t('dashboard.campo.certificado'),align: 'center',},
+        ]
+
 onMounted(async () => {
 const informacion1= await axiosInstance.get('informacion',{headers: {
       Authorization: 'Bearer '+token,
       Accept:'application/json'
     }})
 informacion.value=informacion1.data.datos
-console.log('aqui');
-console.log(nformacion1.data.datos);
 loading.value=false
 })
 
-
-
-  const datos={
-business: '',
-city: '',
-country: '',
-created_at: '',
-email: '',
-id_number: '',
-lastname: '',
-name: '',
-nickname: '',
-phone: '',
-position: '',
-registro: null}
-
-const BuscarModulo = (modulo) => {
+const BuscarModulo = (modulo, item) => {
       // Verifica si MODULOS está vacío o no
-      console.log(modulo);
-      console.log(informacion.value.MODULOS);
-      if (informacion.value.MODULOS && Array.isArray(informacion.value.MODULOS)) {
-        return informacion.value.MODULOS.includes(modulo);
+      console.log(item);
+      if (item.MODULOS && Array.isArray(item.MODULOS)) {
+        return item.MODULOS.includes(modulo);
       }
       return false;
     };
-
-
-  /*  function BuscarModulo(modulo) {
-      console.log(modulo);
-      console.log(informacion.MODULOS);
-      if (informacion.MODULOS && Array.isArray(informacion.MODULOS)) {
-        console.log(informacion.MODULOS.includes(modulo));
-        return informacion.MODULOS.includes(modulo);
-      }
-      return false;
-    }*/
-
-/*const informacion1= await axiosInstance.get('miavance').then(response=>{
-        console.log(response.data.datos);
-        return response.data.datos;
-        console.log(informacion);
-      }).catch(error => {
-
-        console.log(error);
-
-    }))*/
-
-
-
-
-
-
-
 
 </script>
 <style type="text/css">

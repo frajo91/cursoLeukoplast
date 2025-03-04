@@ -116,8 +116,6 @@ const informacion1= await axiosInstance.get('miavance',{headers: {
       Accept:'application/json'
     }})
 informacion.value=informacion1.data.datos
-console.log('aqui');
-console.log(informacion.value);
 loading.value=false
 })
 
