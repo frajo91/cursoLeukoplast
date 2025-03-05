@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Definir la URL base de tu API
 const RUTA_SERVIDOR = 'http://127.0.0.1:8000/api/'
-
+//const RUTA_SERVIDOR='https://www.service.leukoplastfarmacias.com/api/'
 // Función para obtener el token desde localStorage
 const getToken = () => localStorage.getItem('token');
 

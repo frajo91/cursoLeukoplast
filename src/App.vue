@@ -119,4 +119,8 @@ watch(
   th{
     color: red;
   }
+
+  .filtro{
+    min-width: 200px;
+  }
 </style>

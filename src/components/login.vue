@@ -79,7 +79,7 @@
         rounded="lg"
       >
         <v-list-item
-          title="Guardando registro.."
+          :title="t('api.consulta')"
         >
           <template v-slot:prepend>
             <div class="pe-4">
