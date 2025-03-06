@@ -48,16 +48,16 @@
                   ></v-alert>
               </v-col>
               <v-col cols=12 sm=6 style="text-align: center;">
-                <v-btn color="#ff0023ff" rounded="xl" size="large" @click="login()" >
+                <v-btn color="#ff0023ff" rounded="xl" size="large" @click="login(v$)" >
                   {{$t('login.ingresar')}}
                 </v-btn>
               </v-col>
               <v-col cols=12 sm=6 style="text-align: center;">
-                <v-btn rounded="xl" size="large" class="fondoverde" @click="this.$router.push('/register')">
+                <v-btn rounded="xl" size="large" class="fondoverde" @click="router.push('/register')">
                   {{$t('login.registrarse')}}
                 </v-btn>
               </v-col>
-              <v-col cols=12 style="text-align: center;" class="ma-3"> <a @click="this.$router.push('/recuperar')">{{$t('login.olvido')}}</a></v-col>
+              <v-col cols=12 style="text-align: center;" class="ma-3"> <a @click="router.push('/recuperar')">{{$t('login.olvido')}}</a></v-col>
               <v-col cols=5 align-self="center">
                 <v-img src="@/assets/images/logo2.png" width=200></v-img>
               </v-col>
@@ -140,9 +140,9 @@ const { t } = useI18n();
     //return { form, v$ }
 
 
-  async function login() {
+  async function login(formulario) {
 
-      const isFormCorrect = await this.v$.$validate()
+      const isFormCorrect = await formulario.$validate()
       // you can show some extra alert to the user or just leave the each field to show it's `$errors`.
       if (!isFormCorrect) return
       // actually submit form

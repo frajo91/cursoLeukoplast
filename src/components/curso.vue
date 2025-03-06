@@ -1,8 +1,10 @@
 <template>
 
-			<iframe src="/curso/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>
-
-
+			<!--<iframe src="/curso/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>-->
+			<!--curso1: introduccion a MARSI-->
+			<!--<iframe src="/curso1: introduccion a MARSI/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>-->
+			<!--curso2: Prevencion MARSI-->
+			<iframe src="/curso2: Prevencion MARSI/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>
  <v-dialog
       v-model="dialog"
       max-width="320"

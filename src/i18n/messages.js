@@ -15,8 +15,8 @@ const messages = {
        numero: "Only numeric values are allowed."
      },
      detalleCurso: {
-       titulo: "Wound Care Education in Pharmacies",
-       modulos: "6"
+       titulo: "Prevention and Treatment of MARSI",
+       modulos: "5"
      },
      login: {
        bienvenido: "WELCOME!",
@@ -149,8 +149,8 @@ const messages = {
       numero: 'Solo se admiten valores numéricos.'
     },
     detalleCurso:{
-      titulo:'Educación sobre el cuidado de heridas en las farmacias',
-      modulos:'6'
+      titulo:'Prevención y tratamiento de MARSI',
+      modulos:'5'
     },
     login:{
       bienvenido:'¡BIENVENIDO!',
@@ -286,8 +286,8 @@ const messages = {
       numero: "Somente valores numéricos são permitidos."
     },
     detalleCurso: {
-      titulo: "Educação sobre cuidados com feridas nas farmácias",
-      modulos: "6"
+      titulo: "Prevenção e Tratamento de MARSI",
+      modulos: "5"
     },
     login: {
       bienvenido: "BEM-VINDO!",
