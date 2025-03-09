@@ -12,7 +12,9 @@
             <v-container>
             <v-row >
               <v-col cols=12 sm=6 order=2 order-sm=1><h6 class="text-h4">{{$t('login.bienvenido')}}</h6></v-col>
-              <v-col cols=12 sm=6 order=1 order-sm=2> <v-img src="@/assets/images/logo.png"></v-img></v-col>
+              <v-col cols=12 sm=6 order=1 order-sm=2>
+                <v-img src="@/assets/images/logo.png"></v-img>
+              </v-col>
             </v-row>
             <v-row justify="center">
               <v-col cols=12>
@@ -139,14 +141,52 @@ const { t } = useI18n();
 
     //return { form, v$ }
 
+    const login = async (formulario) => {
+      const isFormCorrect = await formulario.$validate();
 
-  async function login(formulario) {
+      // Si el formulario no es válido, no continúa
+      if (!isFormCorrect) return;
+
+      // Mostrar el diálogo de carga
+        dialog.value = true;
+
+      try {
+        const response = await axiosInstance.post('login', form);
+
+        if (response.data.access_token) {
+          localStorage.token = response.data.access_token;
+          if (response.data.restart === "1") {
+            localStorage.changed = 1;
+            router.push('/actualizar');
+          } else {
+            if (response.data.Inactivo === 1) {
+              router.push('/dashboard');
+            } else {
+              router.push('/inicio');
+            }
+          }
+        }
+
+        // Aquí ` this. sigue siendo el contexto del componente Vue
+          dialog.value = false;
+        console.log("Recurso creado con éxito:", response.data);
+      } catch (error) {
+        if (error.response) {
+          mensaje.value = error.response.data.mensaje ||  t('api.error');
+            error1.value = true;
+          console.log(  error.response.data.mensaje);
+        }
+          dialog.value = false;
+      }
+    };
+
+  /*async login(formulario, todo) {
 
       const isFormCorrect = await formulario.$validate()
       // you can show some extra alert to the user or just leave the each field to show it's `$errors`.
       if (!isFormCorrect) return
       // actually submit form
-        this.dialog=true;
+        todo.dialog=true;
       axiosInstance.post('login',form).then(response=>{
         if (response.data.access_token) {
           localStorage.token=response.data.access_token;
@@ -163,7 +203,7 @@ const { t } = useI18n();
           }
 
         }
-        this.dialog=false;
+        todo.dialog=false;
         console.log("Recurso creado con éxito:", response.data);
       }).catch(error => {
          if (error.response) {
@@ -172,24 +212,15 @@ const { t } = useI18n();
             }else{
               mensaje=t('api.error');
             }
-            this.error1=true;
+            todo.error1=true;
             console.log(error1)
         }
-        this.dialog=false;
+        todo.dialog=false;
     });
-  }
+  }*/
 
   const {  smAndUp,lgAndUp } = useDisplay()
 
-    // Usar breakpoints para determinar la clase de border-radius
-    /*const breakpointClass = computed(() => {
-      if (lgAndUp) {
-        return 'rounded-t-lg fondoimagen'; // Para pantallas extra pequeñas
-      //   Para pantallas medianas
-      }
-        return 'rounded-s-lg fondoimagen'; // Para pantallas grandes
 
-
-    });*/
 
 </script>

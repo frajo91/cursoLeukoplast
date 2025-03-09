@@ -2,9 +2,9 @@
 
 			<!--<iframe src="/curso/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>-->
 			<!--curso1: introduccion a MARSI-->
-			<!--<iframe src="/curso1: introduccion a MARSI/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>-->
+			<iframe src="./curso1_introduccion_MARSI/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>
 			<!--curso2: Prevencion MARSI-->
-			<iframe src="/curso2: Prevencion MARSI/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>
+			<!--<iframe src="./curso2_Prevencion_MARSI/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>-->
  <v-dialog
       v-model="dialog"
       max-width="320"
@@ -56,32 +56,32 @@
 
 
 
+		const progreso1 = async (progreso) => {
+		    // Mostrar el diálogo de carga
+		    dialog.value = true;
 
-	async function progreso1(progreso) {
+		    try {
+		        const response = await axiosInstance.post('progreso', progreso);
 
-      this.dialog=true;
-      axiosInstance.post('progreso',progreso).then(response=>{
-        console.log("Recurso creado con éxito:", response.data);
-        this.dialog=false;
-        //this.dialog_ok=true;
-      }).catch(error => {
-         if (error.response) {
-            if (error.response.data.mensaje) {
-              this.mensaje=error.response.data.mensaje;
-            }else{
-              this.mensaje="Error al conectarse al servidor."
-            }
-            //this.error1=true;
-            //console.log(error1);
-        }
-        console.log(error);
-        this.dialog=false;
+		        // Ocultar el diálogo de carga
+		        dialog.value = false;
 
-    });
+		        // Si deseas mostrar algún mensaje de éxito, puedes hacerlo aquí
 
+		    } catch (error) {
+		        if (error.response) {
+		            if (error.response.data.mensaje) {
+		                mensaje.value = error.response.data.mensaje;
+		            } else {
+		                mensaje.value = "Error al conectarse al servidor.";
+		            }
+		        }
 
+		        // Ocultar el diálogo de carga
+		        dialog.value = false;
+		    }
+		};
 
-  }
 
 </script>
 

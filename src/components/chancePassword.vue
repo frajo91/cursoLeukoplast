@@ -2,7 +2,7 @@
 
         <v-row no-gutters style="min-height:60vh;">
           <v-col cols=12 sm=4 md=5 lg=6 :class="smAndUp ? 'rounded-s-xl fondoimagen' : 'rounded-t-xl fondoimagen'">
-            <v-banner color="success" :text=" $t('login.titulo')" :stacked="false" :class="{'rounded-ts-xl rounded-te-lg rounded-be-lg fondoverde w-66 text-h4 font-weight-bold': lgAndUp,
+            <v-banner color="success" :text=" $t('detalleCurso.titulo')" :stacked="false" :class="{'rounded-ts-xl rounded-te-lg rounded-be-lg fondoverde w-66 text-h4 font-weight-bold': lgAndUp,
             'rounded-ts-xl rounded-te-lg rounded-be-lg fondoverde text-h4 font-weight-bold': smAndUp,
             'rounded-t-xl fondoverde text-h4 font-weight-bold': !lgAndUp && !smAndUp}">
             </v-banner>
@@ -62,11 +62,11 @@
                   ></v-alert>
               </v-col>
               <v-col cols=12 style="text-align: center;">
-                <v-btn  rounded="xl" size="large" @click="login()" class="fondoverde" >
+                <v-btn  rounded="xl" size="large" @click="login(v$)" class="fondoverde" >
                   {{$t('cambiarContrasena.titulo')}}
                 </v-btn>
               </v-col>
-          
+
               <v-col cols=5 align-self="center">
                 <v-img src="@/assets/images/logo2.png" width=200></v-img>
               </v-col>
@@ -158,30 +158,39 @@ const { t } = useI18n();
     //return { form, v$ }
 
 
-  async function login() {
 
-      const isFormCorrect = await this.v$.$validate()
-      // you can show some extra alert to the user or just leave the each field to show it's `$errors`.
-      if (!isFormCorrect) return
-      // actually submit form
-        this.dialog=true;
-      axiosInstance.post('update',form).then(response=>{
-          router.push('/inicio');
-        this.dialog=false;
-        //console.log("Recurso creado con éxito:", response.data);
-      }).catch(error => {
-         if (error.response) {
-            if (error.response.data.mensaje) {
-              mensaje=error.response.data.mensaje;
-            }else{
-              mensaje=t('api.error');
+    const login = async (formulario) => {
+        // Validamos el formulario
+        const isFormCorrect = await formulario.$validate();
+        if (!isFormCorrect) return;
+
+        // Mostrar el diálogo de carga
+        dialog.value = true;
+
+        try {
+            const response = await axiosInstance.post('update', form);
+
+            // Redirigir después de la respuesta exitosa
+            router.push('/inicio');
+
+            // Ocultar el diálogo de carga
+            dialog.value = false;
+
+        } catch (error) {
+            // Manejar el error
+            if (error.response) {
+                if (error.response.data.mensaje) {
+                    mensaje.value = error.response.data.mensaje;
+                } else {
+                    mensaje.value = t('api.error');
+                }
+                error1.value = true;
             }
-            this.error1=true;
-            //console.log(error1)
+
+            // Ocultar el diálogo de carga en caso de error
+            dialog.value = false;
         }
-        this.dialog=false;
-    });
-  }
+    };
 
   const {  smAndUp,lgAndUp } = useDisplay()
 

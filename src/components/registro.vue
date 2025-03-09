@@ -3,7 +3,7 @@
         <v-row no-gutters v-show="!showTermino">
           <v-col cols=4    >
               <v-img class="d-none d-sm-block"
-                src="@/assets/images/registro.png"
+                src="@/assets/images/Cutimed_ClinicalSetting_HCP_Rep_Portrait.jpg"
                 cover
                 height="100%"
                 rounded="s-xl"
@@ -99,7 +99,7 @@
                 <div class="g-recaptcha" data-sitekey="6LfsVfUpAAAAAPqDuMOEWhwQDS5L7qd2bIIAJchE"></div>
               </v-col>
               <v-col cols=12 sm=6 style="text-align: center;">
-                <v-btn color="#3ec7c0ff" rounded="xl" size="large" style="color: white;" @click="register()" >
+                <v-btn color="#3ec7c0ff" rounded="xl" size="large" style="color: white;" @click="register(v$)" >
                   {{$t('registro.enviar')}}
                 </v-btn>
               </v-col>
@@ -221,39 +221,41 @@ var dialog_ok=defineModel({ default: false })
 
    var v$ = useVuelidate(rules, form)
 
- async function register() {
+   const register = async (formulario) => {
+     const isFormCorrect = await formulario.$validate();
 
-      const isFormCorrect = await this.v$.$validate()
-      // you can show some extra alert to the user or just leave the each field to show it's `$errors`.
-      if (!isFormCorrect) return
-      // actually submit form
-        this.dialog=true;
-      axiosInstance.post('register',form).then(response=>{
-        if (response.data.access_token) {
-          localStorage.token=response.data.access_token;
-        }
-        this.dialog=false;
-        this.dialog_ok=true;
-      }).catch(error => {
-         if (error.response) {
-            if (error.response.data.mensaje) {
-              this.mensaje=error.response.data.mensaje;
-            }else{
-              this.mensaje=t('api.error')
-            }
-            this.error1=true;
+     // Si el formulario no es válido, no continuar
+     if (!isFormCorrect) return;
 
-        }
+     // Mostrar el diálogo de carga
+     dialog.value = true;
 
-        this.dialog=false;
+     try {
+       const response = await axiosInstance.post('register', form);
 
-    });
-  }
+       if (response.data.access_token) {
+         localStorage.token = response.data.access_token;
+       }
 
-function showterminofuntion(vale) {
-    this.showTermino=vale;
+       // Actualizar estado del diálogo
+       dialog.value = false;
+       dialog_ok.value = true;
 
-}
+     } catch (error) {
+       if (error.response) {
+         // Mostrar mensaje de error
+         mensaje.value = error.response.data.mensaje || t('api.error');
+         error1.value = true;
+       }
+
+       // Ocultar diálogo de carga
+       dialog.value = false;
+     }
+   };
+
+   const showterminofuntion = (vale) => {
+       showTermino.value = vale;
+   };
   //
 </script>
 

@@ -423,33 +423,42 @@ const filtro = () => {
 
 };
 
-async function certificado(id) {
 
-    // actually submit form
-    loading.value=true;
-    axiosInstance.get('certificado/'+id).then(response=>{
-      let registro=informacion.find(item=>item.IDUSUARIO===id);
-      let registrofilter=DataFilter.find(item=>item.IDUSUARIO===id);
-      if (registro) {
-        registro.ENVIO=1;
-      }
+const certificado = async (id) => {
+    // Mostrar el estado de carga
+    loading.value = true;
 
-      if (registrofilter) {
-        registrofilter.ENVIO=1;
-      }
-      loading.value=false;
-      alertVisible.value = true;  // Mostrar el alert
-      setTimeout(() => {
-        alertVisible.value = false;  // Ocultar el alert después de 5 segundos
-      }, 5000);  // 5000 milisegundos = 5
-    }).catch(error => {
-      alertVisibleerror.value=true;
-      setTimeout(() => {
-        alertVisibleerror.value = false;  // Ocultar el alert después de 5 segundos
-      }, 5000);
-      loading.value=false;
-  });
-}
+    try {
+        const response = await axiosInstance.get('certificado/' + id);
+
+        let registro = informacion.find(item => item.IDUSUARIO === id);
+        let registrofilter = DataFilter.find(item => item.IDUSUARIO === id);
+
+        if (registro) {
+            registro.ENVIO = 1;
+        }
+
+        if (registrofilter) {
+            registrofilter.ENVIO = 1;
+        }
+
+        loading.value = false;
+        alertVisible.value = true;  // Mostrar el alert
+
+        setTimeout(() => {
+            alertVisible.value = false;  // Ocultar el alert después de 5 segundos
+        }, 5000);  // 5000 milisegundos = 5 segundos
+
+    } catch (error) {
+        alertVisibleerror.value = true;
+
+        setTimeout(() => {
+            alertVisibleerror.value = false;  // Ocultar el alert de error después de 5 segundos
+        }, 5000);
+
+        loading.value = false;
+    }
+};
 
 </script>
 <style type="text/css">

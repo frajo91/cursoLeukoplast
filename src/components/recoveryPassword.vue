@@ -42,12 +42,12 @@
                   ></v-alert>
               </v-col>
               <v-col cols=12 sm=6 style="text-align: center;">
-                <v-btn color="#ff0023ff" rounded="xl" size="large" @click="recuperar()" >
+                <v-btn color="#ff0023ff" rounded="xl" size="large" @click="recuperar(v$)" >
                   {{$t('recuperar.recuperar')}}
                 </v-btn>
               </v-col>
               <v-col cols=12 sm=6 style="text-align: center;">
-                <v-btn rounded="xl" size="large" class="fondoverde" @click="this.$router.push('/')">
+                <v-btn rounded="xl" size="large" class="fondoverde" @click="router.push('/')">
                   {{$t('recuperar.inicio')}}
                 </v-btn>
               </v-col>
@@ -72,7 +72,7 @@
               </v-col >
 
               <v-col cols=12 style="text-align: center;">
-                <v-btn rounded="xl" size="large" class="fondoverde" @click="this.$router.push('/')">
+                <v-btn rounded="xl" size="large" class="fondoverde" @click="router.push('/')">
                   {{$t('recuperar.volver')}}
                 </v-btn>
               </v-col>
@@ -162,29 +162,26 @@ const { t } = useI18n();
     //return { form, v$ }
 
 
-  async function recuperar() {
+    const recuperar = async (formulario) => {
+        const isFormCorrect = await formulario.$validate();
+        // Si el formulario no es válido, no continuar
+        if (!isFormCorrect) return;
 
-      const isFormCorrect = await this.v$.$validate()
-      // you can show some extra alert to the user or just leave the each field to show it's `$errors`.
-      if (!isFormCorrect) return
-      // actually submit form
-        this.dialog=true;
-      axiosInstance.post('restablecer',form).then(response=>{
-        this.enviado=true;
-        this.dialog=false;;
-      }).catch(error => {
+        // Mostrar el diálogo de carga
+        dialog.value = true;
 
-         if (error.response) {
-            if (error.response.data.mensaje) {
-              mensaje=error.response.data.mensaje;
-            }else{
-              mensaje=t('api.error');
+        try {
+            const response = await axiosInstance.post('restablecer', form);
+            enviado.value = true;
+            dialog.value = false;
+        } catch (error) {
+            if (error.response) {
+                mensaje.value = error.response.data.mensaje || t('api.error');
+                error1.value = true;
             }
-            this.error1=true;
+            dialog.value = false;
         }
-        this.dialog=false;
-    });
-  }
+    };
 
   function ocultarCorreo(correo) {
   // Verifica si el correo tiene el formato adecuado

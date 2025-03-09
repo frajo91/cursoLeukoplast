@@ -7,11 +7,11 @@
         cols=12
         sm=11
         md=8>
-        <v-sheet     
+        <v-sheet
           elevation="12"
           max-height="90vh"
           rounded="xl"
-          width="100%" class="ma-auto"> 
+          width="100%" class="ma-auto">
         <v-container >
           <v-row justify="center" class="ma-5">
             <p class="text-h3 font-weight-bold" style="color: red;">BIEN HECHO!!</p>
@@ -35,15 +35,15 @@
           </v-row>
           <v-row justify="center">
             <v-col style="text-align: center;" v-if="porcentaje.p==0">
-              <v-btn rounded="xl" size="large" color="#3ec7c0ff" @click="this.$router.push('cursos')"
+              <v-btn rounded="xl" size="large" color="#3ec7c0ff" @click="router.push('cursos')"
 style="color: white;">INICIAR CURSO</v-btn>
             </v-col>
             <v-col style="text-align: center;" v-if="porcentaje.p>0">
-              <v-btn rounded="xl" size="large" color="#3ec7c0ff" @click="this.$router.push('cursos')"
+              <v-btn rounded="xl" size="large" color="#3ec7c0ff" @click="router.push('cursos')"
 style="color: white;">REINTENTAR</v-btn>
             </v-col>
             <v-col style="text-align: center;">
-              <v-btn rounded="xl" size="large" color="#dd0f2cff" @click="this.$router.push('/')">SALIR</v-btn>
+              <v-btn rounded="xl" size="large" color="#dd0f2cff" @click="router.push('/')">SALIR</v-btn>
             </v-col>
           </v-row>
 
@@ -77,7 +77,7 @@ if (informacion.value.registro!==null) {
   localStorage.progreso=progreso.value.progreso;
   console.log(informacion.value.registro)
   porcentaje.value=JSON.parse(progreso.value.progreso);
-  
+
 }
 console.log(informacion1)
 })
@@ -108,18 +108,18 @@ registro: null}
         return response.data.datos;
         console.log(informacion);
       }).catch(error => {
-        
+
         console.log(error);
 
     }))*/
 
 
-    
 
-  
-      
 
-  
+
+
+
+
 </script>
 <style type="text/css">
   .fondo{
@@ -127,4 +127,3 @@ registro: null}
     height: 100%;
   }
 </style>
-

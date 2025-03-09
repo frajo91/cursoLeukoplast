@@ -58,15 +58,15 @@
 
           <v-row justify="center">
             <v-col style="text-align: center;" v-if="informacion.PORCENTAJE_CURSO>0">
-              <v-btn rounded="xl" size="large" color="#3ec7c0ff" @click="this.$router.push('cursos')"
+              <v-btn rounded="xl" size="large" color="#3ec7c0ff" @click="router.push('cursos')"
 style="color: white;">{{$t('inicio.reintentar')}}</v-btn>
             </v-col>
             <v-col style="text-align: center;" v-if="informacion.PORCENTAJE_CURSO==0">
-              <v-btn rounded="xl" size="large" color="#3ec7c0ff" @click="this.$router.push('cursos')"
+              <v-btn rounded="xl" size="large" color="#3ec7c0ff" @click="router.push('cursos')"
 style="color: white;">{{$t('inicio.iniciar')}}</v-btn>
             </v-col>
             <v-col style="text-align: center;">
-              <v-btn rounded="xl" size="large" color="#dd0f2cff" @click="this.$router.push('/')">{{$t('inicio.salir')}}</v-btn>
+              <v-btn rounded="xl" size="large" color="#dd0f2cff" @click="router.push('/')">{{$t('inicio.salir')}}</v-btn>
             </v-col>
           </v-row>
 
@@ -145,26 +145,6 @@ const BuscarModulo = (modulo) => {
       return false;
     };
 
-
-  /*  function BuscarModulo(modulo) {
-      console.log(modulo);
-      console.log(informacion.MODULOS);
-      if (informacion.MODULOS && Array.isArray(informacion.MODULOS)) {
-        console.log(informacion.MODULOS.includes(modulo));
-        return informacion.MODULOS.includes(modulo);
-      }
-      return false;
-    }*/
-
-/*const informacion1= await axiosInstance.get('miavance').then(response=>{
-        console.log(response.data.datos);
-        return response.data.datos;
-        console.log(informacion);
-      }).catch(error => {
-
-        console.log(error);
-
-    }))*/
 
 
 

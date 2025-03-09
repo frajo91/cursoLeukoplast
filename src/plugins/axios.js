@@ -2,10 +2,13 @@ import axios from 'axios';
 
 // Definir la URL base de tu API
 //const RUTA_SERVIDOR = 'http://127.0.0.1:8000/api/'
-const RUTA_SERVIDOR='https://www.service.leukoplastfarmacias.com/api/'
+//const RUTA_SERVIDOR='https://www.service.leukoplastfarmacias.com/api/'
+//const RUTA_SERVIDOR='https://grupovector.space/Services/preMarsi_service/api/'
+const RUTA_SERVIDOR='https://grupovector.space/Services/introMarsi_service/api/'
 // Función para obtener el token desde localStorage
 const getToken = () => localStorage.getItem('token');
 
+localStorage.setItem('base', RUTA_SERVIDOR);
 // Crear la instancia de axios
 const axiosInstance = axios.create({
   baseURL: RUTA_SERVIDOR,

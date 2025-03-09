@@ -78,10 +78,12 @@ watch(
   }
 
   .fondoimagen{
-    background-image: url(@/assets/images/login.png);
+    /*background-image: url(@/assets/images/login.png);*/
+    background-image: url(@/assets/images/MARSI-INTRODUCCION.jpg);
     background-size: cover;
     min-height: 20vh;
   }
+
 
   .fondoverde{
     background-color: #3ec7c0ff;
@@ -123,4 +125,11 @@ watch(
   .filtro{
     min-width: 200px;
   }
+
+  .text-mini {
+  font-size: .5rem;
+  font-weight: 400;
+  line-height: 1.425;
+  letter-spacing: .0178571429em;
+}
 </style>
