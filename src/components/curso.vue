@@ -1,92 +1,81 @@
 <template>
+  <!--<iframe src="./curso/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>-->
+  <!--curso1: introduccion a MARSI-->
+  <iframe
+    src="./curso1_introduccion_MARSI/index.html"
+    style="width: 100%; height: 100%"
+    id="cursol"
+  ></iframe>
+  <!--curso2: Prevencion MARSI-->
+  <!--<iframe
+    src="./curso2_Prevencion_MARSI/index.html"
+    style="width: 100%; height: 100%"
+    id="cursol"
+  ></iframe>-->
+  <v-dialog v-model="dialog" max-width="320" persistent>
+    <v-list class="py-2" color="primary" elevation="12" rounded="lg">
+      <v-list-item title="Guardando progreso..">
+        <template v-slot:prepend>
+          <div class="pe-4">
+            <v-icon color="primary" size="x-large"></v-icon>
+          </div>
+        </template>
 
-			<!--<iframe src="/curso/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>-->
-			<!--curso1: introduccion a MARSI-->
-			<iframe src="./curso1_introduccion_MARSI/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>
-			<!--curso2: Prevencion MARSI-->
-			<!--<iframe src="./curso2_Prevencion_MARSI/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>-->
- <v-dialog
-      v-model="dialog"
-      max-width="320"
-      persistent
-    >
-      <v-list
-        class="py-2"
-        color="primary"
-        elevation="12"
-        rounded="lg"
-      >
-        <v-list-item
-          title="Guardando progreso.."
-        >
-          <template v-slot:prepend>
-            <div class="pe-4">
-              <v-icon color="primary" size="x-large"></v-icon>
-            </div>
-          </template>
-
-          <template v-slot:append>
-            <v-progress-circular
-              color="primary"
-              indeterminate="disable-shrink"
-              size="16"
-              width="2"
-            ></v-progress-circular>
-          </template>
-        </v-list-item>
-      </v-list>
-    </v-dialog>
-
-
+        <template v-slot:append>
+          <v-progress-circular
+            color="primary"
+            indeterminate="disable-shrink"
+            size="16"
+            width="2"
+          ></v-progress-circular>
+        </template>
+      </v-list-item>
+    </v-list>
+  </v-dialog>
 </template>
 <script setup>
-	import axiosInstance from '@/plugins/axios';
-	import { reactive,ref,watch,onMounted } from 'vue'
-	import { useRouter, useRoute } from 'vue-router'
+import axiosInstance from "@/plugins/axios";
+import { reactive, ref, watch, onMounted } from "vue";
+import { useRouter, useRoute } from "vue-router";
 
-	  const router = useRouter()
-	  const route = useRoute()
+const router = useRouter();
+const route = useRoute();
 
-	const token=localStorage.token||'';
-	if (token.length<1) {
-		router.push('/');
-	}
+const token = localStorage.token || "";
+if (token.length < 1) {
+  router.push("/");
+}
 
-	var dialog=ref(false)
+var dialog = ref(false);
 
+const progreso1 = async (progreso) => {
+  // Mostrar el diálogo de carga
+  dialog.value = true;
 
+  try {
+    const response = await axiosInstance.post("progreso", progreso);
 
-		const progreso1 = async (progreso) => {
-		    // Mostrar el diálogo de carga
-		    dialog.value = true;
+    // Ocultar el diálogo de carga
+    dialog.value = false;
 
-		    try {
-		        const response = await axiosInstance.post('progreso', progreso);
+    // Si deseas mostrar algún mensaje de éxito, puedes hacerlo aquí
+  } catch (error) {
+    if (error.response) {
+      if (error.response.data.mensaje) {
+        mensaje.value = error.response.data.mensaje;
+      } else {
+        mensaje.value = "Error al conectarse al servidor.";
+      }
+    }
 
-		        // Ocultar el diálogo de carga
-		        dialog.value = false;
-
-		        // Si deseas mostrar algún mensaje de éxito, puedes hacerlo aquí
-
-		    } catch (error) {
-		        if (error.response) {
-		            if (error.response.data.mensaje) {
-		                mensaje.value = error.response.data.mensaje;
-		            } else {
-		                mensaje.value = "Error al conectarse al servidor.";
-		            }
-		        }
-
-		        // Ocultar el diálogo de carga
-		        dialog.value = false;
-		    }
-		};
-
-
+    // Ocultar el diálogo de carga
+    dialog.value = false;
+  }
+};
 </script>
 
 <style type="text/css">
-  .fondo1{
-    background-color:#dd0f2cff !important;
-  }
+.fondo1 {
+  background-color: #dd0f2cff !important;
+}
 </style>

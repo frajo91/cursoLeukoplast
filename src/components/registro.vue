@@ -3,7 +3,7 @@
         <v-row no-gutters v-show="!showTermino">
           <v-col cols=4    >
               <v-img class="d-none d-sm-block"
-                src="@/assets/images/Cutimed_ClinicalSetting_HCP_Rep_Portrait.jpg"
+                src="@/assets/images/cutimed_website_wound-management_DiabeticFootUlcer_HMS_Campaign_583x415_1.jpg"
                 cover
                 height="100%"
                 rounded="s-xl"

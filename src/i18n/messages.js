@@ -1,90 +1,96 @@
-import { es, en, pt } from 'vuetify/locale'
+import { es, en, pt } from "vuetify/locale";
 const messages = {
   en: {
     $vuetify: {
       ...en,
       dataIterator: {
-        rowsPerPageText: 'Items per page:',
-        pageText: '{0}-{1} of {2}',
+        rowsPerPageText: "Items per page:",
+        pageText: "{0}-{1} of {2}",
       },
     },
     validation: {
-       required: "This field is required.",
-       min: "The value must be at least {length} characters long.",
-       email: "The email is not valid.",
-       numero: "Only numeric values are allowed."
-     },
-     detalleCurso: {
-       titulo: "Introduction to MARSI Course",
-       modulos: "5"
-     },
-     login: {
-       bienvenido: "WELCOME!",
-       mensaje: "Please enter your details below to start the course:",
-       usuario: "USER",
-       contrasena: "PASSWORD",
-       ingresar: "LOG IN",
-       registrarse: "REGISTER",
-       olvido: "FORGOT YOUR PASSWORD? CLICK HERE"
-     },
-     recuperar: {
-        titulo: 'RECOVER YOUR PASSWORD',
-        mensaje: 'Forgot your password? Don’t worry, enter the registered email and we will send you a message with the password.',
-        correo: 'EMAIL',
-        recuperar: 'RECOVER',
-        inicio: 'LOG IN',
-        listo: 'DONE!',
-        enviado: 'We have sent an email to {correo} with the password.',
-        aclaracion: 'If the email doesn’t appear soon, check the spam or junk folder. We have sent it from <b>ingreso@leukoplastfarmacias.com</b>',
-        volver: 'RETURN TO LOG IN'
+      required: "This field is required.",
+      min: "The value must be at least {length} characters long.",
+      email: "The email is not valid.",
+      numero: "Only numeric values are allowed.",
+    },
+    detalleCurso: {
+      titulo: "Introduction to MARSI",
+      modulos: "5",
+    },
+    login: {
+      bienvenido: "WELCOME!",
+      mensaje: "Please enter your details below to start the course:",
+      usuario: "USER",
+      contrasena: "PASSWORD",
+      ingresar: "LOG IN",
+      registrarse: "REGISTER",
+      olvido: "FORGOT YOUR PASSWORD? CLICK HERE",
+    },
+    recuperar: {
+      titulo: "RECOVER YOUR PASSWORD",
+      mensaje:
+        "Forgot your password? Don’t worry, enter the registered email and we will send you a message with the password.",
+      correo: "EMAIL",
+      recuperar: "RECOVER",
+      inicio: "LOG IN",
+      listo: "DONE!",
+      enviado: "We have sent an email to {correo} with the password.",
+      aclaracion:
+        "If the email doesn’t appear soon, check the spam or junk folder. We have sent it from <b>ingreso@leukoplastfarmacias.com</b>",
+      volver: "RETURN TO LOG IN",
     },
     registro: {
-        titulo: 'Registration',
-        mensaje: 'Enter your details to register:',
-        nombre: 'First Name',
-        apellido: 'Last Name',
-        dni: 'Identification Number',
-        cargo: 'Position',
-        farmacia: 'Pharmacy Name',
-        pais: 'Country',
-        ciudad: 'City',
-        telefono: 'Mobile Number',
-        correo: 'Email',
-        usuario: 'Username',
-        contrasena: 'Password',
-        politica: 'Read the privacy and data handling policy',
-        aqui: 'HERE',
-        usoDatos: 'I confirm that I have read this authorization. By accepting, I expressly, voluntarily, and knowingly authorize BSN MEDICAL LTDA to manage, process, handle, and use my personal data.',
-        enviar: 'SEND REQUEST',
-        obligatorio: 'Fields marked with <span style="color: red;">*</span> are required.',
-        mensajeRegistro: 'The request has been successfully submitted.',
-        mensajeRegistro2: 'The response will be sent to the registered email.',
-        iniciar: 'CLICK HERE TO START',
-        cliente: 'Client/Supplier'
+      titulo: "Registration",
+      mensaje: "Enter your details to register:",
+      nombre: "First Name",
+      apellido: "Last Name",
+      dni: "Identification Number",
+      cargo: "Position",
+      farmacia: "Pharmacy Name",
+      pais: "Country",
+      ciudad: "City",
+      telefono: "Mobile Number",
+      correo: "Email",
+      usuario: "Username",
+      contrasena: "Password",
+      politica: "Read the privacy and data handling policy",
+      aqui: "HERE",
+      usoDatos:
+        "I confirm that I have read this authorization. By accepting, I expressly, voluntarily, and knowingly authorize BSN MEDICAL LTDA to manage, process, handle, and use my personal data.",
+      enviar: "SEND REQUEST",
+      obligatorio:
+        'Fields marked with <span style="color: red;">*</span> are required.',
+      mensajeRegistro: "The request has been successfully submitted.",
+      mensajeRegistro2: "The response will be sent to the registered email.",
+      iniciar: "CLICK HERE TO START",
+      cliente: "Client/Supplier",
     },
     cambiarContrasena: {
-        titulo: 'Update Password',
-        mensaje: 'You have recently reset your password. Please, we ask that you set a new one.',
-        confirmar: 'CONFIRM PASSWORD',
-      },
-    terminos:{
+      titulo: "Update Password",
+      mensaje:
+        "You have recently reset your password. Please, we ask that you set a new one.",
+      confirmar: "CONFIRM PASSWORD",
+    },
+    terminos: {
       titulo: "PERSONAL DATA PROCESSING AUTHORIZATION",
       politica: "Global Policy:",
       link_politica: "Privacy Policy (essity.es)",
       regresar: "RETURN",
       colombia: "COLOMBIA",
       chile: "CHILE",
-      mexico: "MEXICO"
+      mexico: "MEXICO",
     },
     inicio: {
       titulo: "Leukoplast pharmacies",
       bienvenido: "WELCOME",
       prueba: "Knowledge test",
       avance: "Course progress",
-      prueba_msg: "* This grade is an average of the performance obtained throughout the course",
+      prueba_msg:
+        "* This grade is an average of the performance obtained throughout the course",
       iniciar: "START",
       reintentar: "RETRY",
-      salir: "LOG OUT"
+      salir: "LOG OUT",
     },
     dashboard: {
       filtro: "FILTER BY",
@@ -95,7 +101,7 @@ const messages = {
         modulo: "Module",
         puntuacion: "Score",
         prueba: "Knowledge test",
-        certificado: "Certificate"
+        certificado: "Certificate",
       },
       enviar: "Send",
       reenviar: "Resend",
@@ -104,187 +110,194 @@ const messages = {
       filtro1: {
         titulo: "Users",
         registrado: "Registered",
-        finalizo: "Completed"
+        finalizo: "Completed",
       },
       filtro2: {
         titulo: "Completed Modules",
         modulo: "Module ",
         todos: "All",
-        ninguno: "None"
+        ninguno: "None",
       },
       filtro3: {
-        titulo: "Pending Modules"
+        titulo: "Pending Modules",
       },
       filtro4: {
         titulo: "Knowledge test",
         aprobada: "Test passed",
         reprobada: "Test failed",
-        noregistra: "Test pending"
+        noregistra: "Test pending",
       },
       filtro5: {
         titulo: "Certificate status",
         enviado: "Sent",
         noenviado: "Pending to send",
-        nodisponible: "Not available"
-      }
+        nodisponible: "Not available",
+      },
     },
     api: {
       consulta: "Querying information.",
       error: "Error connecting to the server.",
-      titulo_error: "Attention"
-    }
+      titulo_error: "Attention",
+    },
   },
   es: {
     $vuetify: {
       ...es,
       dataIterator: {
-        rowsPerPageText: 'Elementos por pagina:',
-        pageText: '{0}-{1} de {2}',
+        rowsPerPageText: "Elementos por pagina:",
+        pageText: "{0}-{1} de {2}",
       },
     },
     validation: {
-      required: 'Este campo es obligatorio.',
-      min: 'El valor debe tener al menos {length} caracteres.',
-      email: 'El correo electrónico no es válido.',
-      numero: 'Solo se admiten valores numéricos.'
+      required: "Este campo es obligatorio.",
+      min: "El valor debe tener al menos {length} caracteres.",
+      email: "El correo electrónico no es válido.",
+      numero: "Solo se admiten valores numéricos.",
     },
-    detalleCurso:{
-      titulo:'Curso de introducción a MARSI',
-      modulos:'5'
+    detalleCurso: {
+      titulo: "Introducción a MARSI",
+      modulos: "5",
     },
-    login:{
-      bienvenido:'¡BIENVENIDO!',
-      mensaje:'A continuación ingrese sus datos para iniciar el curso:',
-      usuario:'USUARIO',
-      contrasena:'CONTRASEÑA',
-      ingresar:'INGRESAR',
-      registrarse:'REGISTRARSE',
-      olvido:'¿OLVIDÓ SU CONTRASEÑA? CLIC AQUÍ'
+    login: {
+      bienvenido: "¡BIENVENIDO!",
+      mensaje: "A continuación ingrese sus datos para iniciar el curso:",
+      usuario: "USUARIO",
+      contrasena: "CONTRASEÑA",
+      ingresar: "INGRESAR",
+      registrarse: "REGISTRARSE",
+      olvido: "¿OLVIDÓ SU CONTRASEÑA? CLIC AQUÍ",
     },
-    recuperar:{
-      titulo:'RECUPERAR SU CONTRASEÑA',
-      mensaje:'¿Olvidó su contraseña? No se preocupe, ingrese el correo electrónico registrado y le enviaremos un mensaje con la contraseña.',
-      correo:'CORREO ELECTRÓNICO',
-      recuperar:'RECUPERAR',
-      inicio:'INICIAR SESIÓN',
-      listo:'¡LISTO!',
-      enviado:'Hemos enviado un correo electrónico a {correo} con la contraseña.',
-      aclaracion:'Si el correo electrónico no aparece pronto, compruebe la carpeta de correo no deseado o Spam. Lo hemos enviado desde <b>ingreso@leukoplastfarmacias.com</b>',
-      volver:"VOLVER A INICIAR SESIÓN"
+    recuperar: {
+      titulo: "RECUPERAR SU CONTRASEÑA",
+      mensaje:
+        "¿Olvidó su contraseña? No se preocupe, ingrese el correo electrónico registrado y le enviaremos un mensaje con la contraseña.",
+      correo: "CORREO ELECTRÓNICO",
+      recuperar: "RECUPERAR",
+      inicio: "INICIAR SESIÓN",
+      listo: "¡LISTO!",
+      enviado:
+        "Hemos enviado un correo electrónico a {correo} con la contraseña.",
+      aclaracion:
+        "Si el correo electrónico no aparece pronto, compruebe la carpeta de correo no deseado o Spam. Lo hemos enviado desde <b>ingreso@leukoplastfarmacias.com</b>",
+      volver: "VOLVER A INICIAR SESIÓN",
     },
-    registro:{
-      titulo:'Registro',
-      mensaje:'Ingresar sus datos para registrarse:',
-      nombre:"Nombres",
-      apellido:"Apellidos",
-      dni:'Número de identificación',
-      cargo:'Cargo',
-      farmacia:'Nombre de Farmacia',
-      pais:'Pais',
-      ciudad:'Ciudad',
-      telefono:'Número de móvil',
-      correo:'Email',
-      usuario:"Usuario",
-      contrasena:'Contraseña',
-      politica:'Leer la politica de privacidad y manejo de datos',
-      aqui:'AQUÍ',
-      usoDatos:'Acredito que he leído la presente autorización. Con mi aceptación, autorizo de manera expresa, voluntaria e informada a BSN MEDICAL LTDA para que administre, procese, trate y utilice mis datos personales.',
-      enviar:'ENVIAR SOLICITUD',
-      obligatorio:'Los campos marcados con <span style="color: red;">*</span> son obligatorios.',
-      mensajeRegistro:'La solicitud ha sido enviada con exito.',
-      mensajeRegistro2:'La respuesta llegará al email registrado.',
-      iniciar:'DA CLIC AQUÍ PARA INICIAR',
-      cliente:'Cliente/Proveedor'
+    registro: {
+      titulo: "Registro",
+      mensaje: "Ingresar sus datos para registrarse:",
+      nombre: "Nombres",
+      apellido: "Apellidos",
+      dni: "Número de identificación",
+      cargo: "Cargo",
+      farmacia: "Nombre de Farmacia",
+      pais: "Pais",
+      ciudad: "Ciudad",
+      telefono: "Número de móvil",
+      correo: "Email",
+      usuario: "Usuario",
+      contrasena: "Contraseña",
+      politica: "Leer la politica de privacidad y manejo de datos",
+      aqui: "AQUÍ",
+      usoDatos:
+        "Acredito que he leído la presente autorización. Con mi aceptación, autorizo de manera expresa, voluntaria e informada a BSN MEDICAL LTDA para que administre, procese, trate y utilice mis datos personales.",
+      enviar: "ENVIAR SOLICITUD",
+      obligatorio:
+        'Los campos marcados con <span style="color: red;">*</span> son obligatorios.',
+      mensajeRegistro: "La solicitud ha sido enviada con exito.",
+      mensajeRegistro2: "La respuesta llegará al email registrado.",
+      iniciar: "DA CLIC AQUÍ PARA INICIAR",
+      cliente: "Cliente/Proveedor",
     },
-    cambiarContrasena:{
-      titulo:'Actualizar contraseña',
-      mensaje:'Recientemente ha restablecido su contraseña. Por favor, le solicitamos que establezca una nueva.',
-      confirmar:'CONFIRMAR LA CONTRASEÑA',
+    cambiarContrasena: {
+      titulo: "Actualizar contraseña",
+      mensaje:
+        "Recientemente ha restablecido su contraseña. Por favor, le solicitamos que establezca una nueva.",
+      confirmar: "CONFIRMAR LA CONTRASEÑA",
     },
-    terminos:{
-      titulo:'AUTORIZACIÓN TRATAMIENTO DE DATOS PERSONALES',
-      politica:'Política global:',
-      link_politica:'Política de Privacidad (essity.es)',
-      regresar: 'REGRESAR',
-      colombia:"COLOMBIA",
-      chile:"CHILE",
-      mexico:"MÉXICO"
+    terminos: {
+      titulo: "AUTORIZACIÓN TRATAMIENTO DE DATOS PERSONALES",
+      politica: "Política global:",
+      link_politica: "Política de Privacidad (essity.es)",
+      regresar: "REGRESAR",
+      colombia: "COLOMBIA",
+      chile: "CHILE",
+      mexico: "MÉXICO",
     },
-    inicio:{
-      titulo:"Leukoplast farmacias",
-      bienvenido:'BIENVENIDO',
-      prueba:'Prueba de conocimiento',
-      avance:'Avance en el curso',
-      prueba_msg:'* Está calificación es un promedio del desempeño obtenido durante todo el curso',
-      iniciar:'INICIAR',
-      reintentar:'REINTENTAR',
-      salir:'SALIR'
+    inicio: {
+      titulo: "Leukoplast farmacias",
+      bienvenido: "BIENVENIDO",
+      prueba: "Prueba de conocimiento",
+      avance: "Avance en el curso",
+      prueba_msg:
+        "* Está calificación es un promedio del desempeño obtenido durante todo el curso",
+      iniciar: "INICIAR",
+      reintentar: "REINTENTAR",
+      salir: "SALIR",
     },
-    dashboard:{
-      filtro:'FILTRAR POR',
+    dashboard: {
+      filtro: "FILTRAR POR",
       campo: {
-        email:'Correo electrónico',
-        nombre:'Nombre',
-        apellido:'Apellido',
-        modulo:'Módulo',
-        puntuacion:'Puntuación',
-        prueba:'prueba de conocimiento',
-        certificado:'Certificado'
+        email: "Correo electrónico",
+        nombre: "Nombre",
+        apellido: "Apellido",
+        modulo: "Módulo",
+        puntuacion: "Puntuación",
+        prueba: "prueba de conocimiento",
+        certificado: "Certificado",
       },
-      enviar:"Enviar",
-      reenviar:"Reenviar",
-      enviar_ok:'Correo enviado',
-      enviar_error:'El correo no pudo ser enviado',
-      filtro1:{
-        titulo:"Usuarios",
-        registrado:'Registrado',
-        finalizo:'Finalizo'
+      enviar: "Enviar",
+      reenviar: "Reenviar",
+      enviar_ok: "Correo enviado",
+      enviar_error: "El correo no pudo ser enviado",
+      filtro1: {
+        titulo: "Usuarios",
+        registrado: "Registrado",
+        finalizo: "Finalizo",
       },
-      filtro2:{
-        titulo:'Módulos Finalizados',
-        modulo:"Módulo ",
-        todos:"Todos",
-        ninguno:"Ninguno"
+      filtro2: {
+        titulo: "Módulos Finalizados",
+        modulo: "Módulo ",
+        todos: "Todos",
+        ninguno: "Ninguno",
       },
-      filtro3:{
-        titulo:'Módulos Pendientes'
+      filtro3: {
+        titulo: "Módulos Pendientes",
       },
-      filtro4:{
-        titulo:'Prueba de conocimiento',
-        aprobada:'Prueba aprobada',
-        reprobada:'Prueba no aprobada',
-        noregistra:'Prueba pendiente',
+      filtro4: {
+        titulo: "Prueba de conocimiento",
+        aprobada: "Prueba aprobada",
+        reprobada: "Prueba no aprobada",
+        noregistra: "Prueba pendiente",
       },
-      filtro5:{
-        titulo:'Estado certificado',
-        enviado:'Enviado',
-        noenviado:'Pendiente enviar',
-        nodisponible:'No disponible'
-      }
+      filtro5: {
+        titulo: "Estado certificado",
+        enviado: "Enviado",
+        noenviado: "Pendiente enviar",
+        nodisponible: "No disponible",
+      },
     },
-    api:{
-      consulta:'Consultando información.',
-      error:'Error al conectarse al servidor.',
-      titulo_error:'Atención'
-    }
+    api: {
+      consulta: "Consultando información.",
+      error: "Error al conectarse al servidor.",
+      titulo_error: "Atención",
+    },
   },
   pt: {
     $vuetify: {
       ...pt,
       dataIterator: {
-        rowsPerPageText: 'Elementos por pagina:',
-        pageText: '{0}-{1} de {2}',
+        rowsPerPageText: "Elementos por pagina:",
+        pageText: "{0}-{1} de {2}",
       },
     },
     validation: {
       required: "Este campo é obrigatório.",
       min: "O valor deve ter pelo menos {length} caracteres.",
       email: "O email não é válido.",
-      numero: "Somente valores numéricos são permitidos."
+      numero: "Somente valores numéricos são permitidos.",
     },
     detalleCurso: {
-      titulo: "Curso de introdução ao MARSI",
-      modulos: "5"
+      titulo: "Introdução a MARSI",
+      modulos: "5",
     },
     login: {
       bienvenido: "BEM-VINDO!",
@@ -293,66 +306,72 @@ const messages = {
       contrasena: "SENHA",
       ingresar: "ENTRAR",
       registrarse: "CADASTRAR-SE",
-      olvido: "ESQUECEU SUA SENHA? CLIQUE AQUI"
+      olvido: "ESQUECEU SUA SENHA? CLIQUE AQUI",
     },
     recuperar: {
-      titulo: 'RECUPERAR SUA SENHA',
-      mensaje: 'Esqueceu sua senha? Não se preocupe, insira o e-mail registrado e enviaremos uma mensagem com a senha.',
-      correo: 'E-MAIL',
-      recuperar: 'RECUPERAR',
-      inicio: 'FAZER LOGIN',
-      listo: 'PRONTO!',
-      enviado: 'Enviamos um e-mail para {correo} com a senha.',
-      aclaracion: 'Se o e-mail não aparecer em breve, verifique a pasta de spam ou lixo eletrônico. Enviamos de <b>ingreso@leukoplastfarmacias.com</b>',
-      volver: 'VOLTAR PARA FAZER LOGIN'
+      titulo: "RECUPERAR SUA SENHA",
+      mensaje:
+        "Esqueceu sua senha? Não se preocupe, insira o e-mail registrado e enviaremos uma mensagem com a senha.",
+      correo: "E-MAIL",
+      recuperar: "RECUPERAR",
+      inicio: "FAZER LOGIN",
+      listo: "PRONTO!",
+      enviado: "Enviamos um e-mail para {correo} com a senha.",
+      aclaracion:
+        "Se o e-mail não aparecer em breve, verifique a pasta de spam ou lixo eletrônico. Enviamos de <b>ingreso@leukoplastfarmacias.com</b>",
+      volver: "VOLTAR PARA FAZER LOGIN",
     },
     registro: {
-      titulo: 'Cadastro',
-      mensaje: 'Digite seus dados para se cadastrar:',
-      nombre: 'Nome',
-      apellido: 'Sobrenome',
-      dni: 'Número de identificação',
-      cargo: 'Cargo',
-      farmacia: 'Nome da Farmácia',
-      pais: 'País',
-      ciudad: 'Cidade',
-      telefono: 'Número de celular',
-      correo: 'E-mail',
-      usuario: 'Usuário',
-      contrasena: 'Senha',
-      politica: 'Leia a política de privacidade e gerenciamento de dados',
-      aqui: 'AQUI',
-      usoDatos: 'Confirmo que li esta autorização. Ao aceitar, autorizo expressamente, voluntária e conscientemente, a BSN MEDICAL LTDA a gerenciar, processar, tratar e utilizar meus dados pessoais.',
-      enviar: 'ENVIAR SOLICITAÇÃO',
-      obligatorio: 'Os campos marcados com <span style="color: red;">*</span> são obrigatórios.',
-      mensajeRegistro: 'A solicitação foi enviada com sucesso.',
-      mensajeRegistro2: 'A resposta será enviada para o e-mail registrado.',
-      iniciar: 'CLIQUE AQUI PARA COMEÇAR',
-      cliente: 'Cliente/Fornecedor'
+      titulo: "Cadastro",
+      mensaje: "Digite seus dados para se cadastrar:",
+      nombre: "Nome",
+      apellido: "Sobrenome",
+      dni: "Número de identificação",
+      cargo: "Cargo",
+      farmacia: "Nome da Farmácia",
+      pais: "País",
+      ciudad: "Cidade",
+      telefono: "Número de celular",
+      correo: "E-mail",
+      usuario: "Usuário",
+      contrasena: "Senha",
+      politica: "Leia a política de privacidade e gerenciamento de dados",
+      aqui: "AQUI",
+      usoDatos:
+        "Confirmo que li esta autorização. Ao aceitar, autorizo expressamente, voluntária e conscientemente, a BSN MEDICAL LTDA a gerenciar, processar, tratar e utilizar meus dados pessoais.",
+      enviar: "ENVIAR SOLICITAÇÃO",
+      obligatorio:
+        'Os campos marcados com <span style="color: red;">*</span> são obrigatórios.',
+      mensajeRegistro: "A solicitação foi enviada com sucesso.",
+      mensajeRegistro2: "A resposta será enviada para o e-mail registrado.",
+      iniciar: "CLIQUE AQUI PARA COMEÇAR",
+      cliente: "Cliente/Fornecedor",
     },
     cambiarContrasena: {
-      titulo: 'Atualizar Senha',
-      mensaje: 'Você recentemente redefiniu sua senha. Por favor, pedimos que defina uma nova.',
-      confirmar: 'CONFIRMAR SENHA',
+      titulo: "Atualizar Senha",
+      mensaje:
+        "Você recentemente redefiniu sua senha. Por favor, pedimos que defina uma nova.",
+      confirmar: "CONFIRMAR SENHA",
     },
-    terminos:{
+    terminos: {
       titulo: "AUTORIZAÇÃO PARA O TRATAMENTO DE DADOS PESSOAIS",
       politica: "Política Global:",
       link_politica: "Política de Privacidade (essity.es)",
       regresar: "VOLTAR",
       colombia: "COLÔMBIA",
       chile: "CHILE",
-      mexico: "MEXICO"
+      mexico: "MEXICO",
     },
     inicio: {
       titulo: "Leukoplast farmácias",
       bienvenido: "BEM-VINDO",
       prueba: "Teste de conhecimento",
       avance: "Progresso no curso",
-      prueba_msg: "* Esta nota é uma média do desempenho obtido durante todo o curso",
+      prueba_msg:
+        "* Esta nota é uma média do desempenho obtido durante todo o curso",
       iniciar: "INICIAR",
       reintentar: "TENTAR NOVAMENTE",
-      salir: "SAIR"
+      salir: "SAIR",
     },
     dashboard: {
       filtro: "FILTRAR POR",
@@ -363,7 +382,7 @@ const messages = {
         modulo: "Módulo",
         puntuacion: "Pontuação",
         prueba: "Teste de conhecimento",
-        certificado: "Certificado"
+        certificado: "Certificado",
       },
       enviar: "Enviar",
       reenviar: "Reenviar",
@@ -372,37 +391,36 @@ const messages = {
       filtro1: {
         titulo: "Usuários",
         registrado: "Registrado",
-        finalizo: "Finalizado"
+        finalizo: "Finalizado",
       },
       filtro2: {
         titulo: "Módulos Finalizados",
         modulo: "Módulo ",
         todos: "Todos",
-        ninguno: "Nenhum"
+        ninguno: "Nenhum",
       },
       filtro3: {
-        titulo: "Módulos Pendentes"
+        titulo: "Módulos Pendentes",
       },
       filtro4: {
         titulo: "Teste de conhecimento",
         aprobada: "Teste aprovado",
         reprobada: "Teste reprovado",
-        noregistra: "Teste pendente"
+        noregistra: "Teste pendente",
       },
       filtro5: {
         titulo: "Status do certificado",
         enviado: "Enviado",
         noenviado: "Pendente de envio",
-        nodisponible: "Indisponível"
-      }
+        nodisponible: "Indisponível",
+      },
     },
     api: {
       consulta: "Consultando informações.",
       error: "Erro ao conectar-se ao servidor.",
-      titulo_error: "Atenção"
-    }
+      titulo_error: "Atenção",
+    },
   },
-}
-
+};
 
 export default messages;
