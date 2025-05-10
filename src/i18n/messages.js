@@ -15,8 +15,16 @@ const messages = {
       numero: "Only numeric values are allowed.",
     },
     detalleCurso: {
-      titulo: "Introduction to MARSI",
-      modulos: "5",
+      1: {
+        titulo: "Introduction to MARSI",
+        modulos: "5",
+        url: "./es/curso1_introduccion_MARSI/index.html",
+      },
+      2: {
+        titulo: "Prevention and treatment of MARSI",
+        modulos: "5",
+        url: "./es/curso2_Prevencion_MARSI/index.html",
+      },
     },
     login: {
       bienvenido: "WELCOME!",
@@ -155,8 +163,16 @@ const messages = {
       numero: "Solo se admiten valores numéricos.",
     },
     detalleCurso: {
-      titulo: "Introducción a MARSI",
-      modulos: "5",
+      1: {
+        titulo: "Introducción a MARSI",
+        modulos: "5",
+        url: "./es/curso1_introduccion_MARSI/index.html",
+      },
+      2: {
+        titulo: "Prevención y tratamiento de MARSI",
+        modulos: "5",
+        url: "./es/curso2_Prevencion_MARSI/index.html",
+      },
     },
     login: {
       bienvenido: "¡BIENVENIDO!",
@@ -296,15 +312,23 @@ const messages = {
       numero: "Somente valores numéricos são permitidos.",
     },
     detalleCurso: {
-      titulo: "Introdução a MARSI",
-      modulos: "5",
+      1: {
+        titulo: "Introdução a MARSI",
+        modulos: "5",
+        url: "./es/curso1_introduccion_MARSI/index.html",
+      },
+      2: {
+        titulo: "Prevention and treatment of MARSI",
+        modulos: "5",
+        url: "./es/curso2_Prevencion_MARSI/index.html",
+      },
     },
     login: {
-      bienvenido: "BEM-VINDO!",
-      mensaje: "Por favor, insira seus dados abaixo para iniciar o curso:",
+      bienvenido: "BEM VINDO(A)!",
+      mensaje: "Insira seus dados abaixo para iniciar o curso:",
       usuario: "USUÁRIO",
       contrasena: "SENHA",
-      ingresar: "ENTRAR",
+      ingresar: "INICIAR",
       registrarse: "CADASTRAR-SE",
       olvido: "ESQUECEU SUA SENHA? CLIQUE AQUI",
     },
@@ -323,7 +347,7 @@ const messages = {
     },
     registro: {
       titulo: "Cadastro",
-      mensaje: "Digite seus dados para se cadastrar:",
+      mensaje: "Insira seus dados para se cadastrar:",
       nombre: "Nome",
       apellido: "Sobrenome",
       dni: "Número de identificação",
@@ -331,14 +355,14 @@ const messages = {
       farmacia: "Instituição",
       pais: "País",
       ciudad: "Cidade",
-      telefono: "Número de celular",
+      telefono: "Telefone",
       correo: "E-mail",
       usuario: "Usuário",
       contrasena: "Senha",
-      politica: "Leia a política de privacidade e gerenciamento de dados",
+      politica: "Leia a política de privacidade e manuseio de dados",
       aqui: "AQUI",
       usoDatos:
-        "Confirmo que li esta autorização. Ao aceitar, autorizo expressamente, voluntária e conscientemente, a BSN MEDICAL LTDA a gerenciar, processar, tratar e utilizar meus dados pessoais.",
+        "Acredito que li a presente autorização. Com minha aceitação, autorizo expressa, voluntária e informadamente a BSN MEDICAL LTDA a administrar, processar, tratar e utilizar meus dados pessoais.",
       enviar: "ENVIAR SOLICITAÇÃO",
       obligatorio:
         'Os campos marcados com <span style="color: red;">*</span> são obrigatórios.',

@@ -1,17 +1,10 @@
 <template>
-  <!--<iframe src="./curso/index.html" style="width: 100%; height: 100%;" id="cursol"></iframe>-->
   <!--curso1: introduccion a MARSI-->
   <iframe
-    src="./curso1_introduccion_MARSI/index.html"
+    :src="$t('detalleCurso.' + curso + '.url')"
     style="width: 100%; height: 100%"
     id="cursol"
   ></iframe>
-  <!--curso2: Prevencion MARSI-->
-  <!--<iframe
-    src="./curso2_Prevencion_MARSI/index.html"
-    style="width: 100%; height: 100%"
-    id="cursol"
-  ></iframe>-->
   <v-dialog v-model="dialog" max-width="320" persistent>
     <v-list class="py-2" color="primary" elevation="12" rounded="lg">
       <v-list-item title="Guardando progreso..">
@@ -38,8 +31,12 @@ import axiosInstance from "@/plugins/axios";
 import { reactive, ref, watch, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
+const curso = import.meta.env.VITE_CURSO;
 const router = useRouter();
 const route = useRoute();
+
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
 
 const token = localStorage.token || "";
 if (token.length < 1) {

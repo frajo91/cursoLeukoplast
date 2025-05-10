@@ -1,186 +1,221 @@
 <template>
-
-        <v-row no-gutters style="min-height:60vh;">
-          <v-col cols=12 sm=4 md=5 lg=6 :class="smAndUp ? 'rounded-s-xl fondoimagen' : 'rounded-t-xl fondoimagen'">
-            <v-banner color="success" :text=" $t('detalleCurso.titulo')" :stacked="false" :class="{'rounded-ts-xl rounded-te-lg rounded-be-lg fondoverde w-66 text-h4 font-weight-bold': lgAndUp,
-            'rounded-ts-xl rounded-te-lg rounded-be-lg fondoverde text-h4 font-weight-bold': smAndUp,
-            'rounded-t-xl fondoverde text-h4 font-weight-bold': !lgAndUp && !smAndUp}">
-            </v-banner>
-          </v-col>
-          <v-col cols=12 sm=8 md=7 lg=6>
-            <v-form class="pa-md-6 pa-4">
-            <v-container>
-            <v-row >
-              <v-col cols=12 sm=6 order=2 order-sm=1><h6 class="text-h4">{{$t('login.bienvenido')}}</h6></v-col>
-              <v-col cols=12 sm=6 order=1 order-sm=2>
-                <v-img src="@/assets/images/logo.png"></v-img>
-              </v-col>
-            </v-row>
-            <v-row justify="center">
-              <v-col cols=12>
-                <p>{{$t('login.mensaje')}}</p>
-              </v-col>
-              <v-col cols=12>
-                <v-text-field :label="$t('login.usuario')+':'" v-model="form.nickname" variant="underlined" :error-messages="v$.nickname.$errors.map(e => e.$message)" @blur="v$.nickname.$touch"
-                  @input="v$.nickname.$touch"></v-text-field>
-              </v-col>
-              <v-col cols=12 >
-                <v-text-field
-                  v-model="form.password"
-                  :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                  :type="show1 ? 'text' : 'password'"
-                  :label="$t('login.contrasena')+':'"
-                  name="password"
-                  counter
-                  :error-messages="v$.password.$errors.map(e => e.$message)"
-                  variant="underlined"
-                  @click:append="show1 = !show1"
-                  @blur="v$.password.$touch"
-                  @input="v$.password.$touch"
-                ></v-text-field>
-              </v-col >
-              <v-col cols=12>
-                  <v-alert
-                     v-model="error1"
-                    density="compact"
-                    :text="mensaje"
-                    :title="$t('api.titulo_error')"
-                    type="warning"
-                    closable
-                  ></v-alert>
-              </v-col>
-              <v-col cols=12 sm=6 style="text-align: center;">
-                <v-btn color="#ff0023ff" rounded="xl" size="large" @click="login(v$)" >
-                  {{$t('login.ingresar')}}
-                </v-btn>
-              </v-col>
-              <v-col cols=12 sm=6 style="text-align: center;">
-                <v-btn rounded="xl" size="large" class="fondoverde" @click="router.push('/register')">
-                  {{$t('login.registrarse')}}
-                </v-btn>
-              </v-col>
-              <v-col cols=12 style="text-align: center;" class="ma-3"> <a @click="router.push('/recuperar')">{{$t('login.olvido')}}</a></v-col>
-              <v-col cols=5 align-self="center">
-                <v-img src="@/assets/images/logo2.png" width=200></v-img>
-              </v-col>
-            </v-row>
-            </v-container>
-            </v-form>
-          </v-col>
-        </v-row>
-
-    <v-dialog
-      v-model="dialog"
-      max-width="320"
-      persistent
+  <v-row no-gutters style="min-height: 60vh">
+    <v-col
+      cols="12"
+      sm="4"
+      md="5"
+      lg="6"
+      :class="smAndUp ? 'rounded-s-xl fondoimagen' : 'rounded-t-xl fondoimagen'"
     >
-      <v-list
-        class="py-2"
-        color="primary"
-        elevation="12"
-        rounded="lg"
+      <v-banner
+        color="success"
+        :text="$t('detalleCurso.' + curso + '.titulo')"
+        :stacked="false"
+        :class="{
+          'rounded-ts-xl rounded-te-lg rounded-be-lg fondoverde w-66 text-h4 font-weight-bold':
+            lgAndUp,
+          'rounded-ts-xl rounded-te-lg rounded-be-lg fondoverde text-h4 font-weight-bold':
+            smAndUp,
+          'rounded-t-xl fondoverde text-h4 font-weight-bold':
+            !lgAndUp && !smAndUp,
+        }"
       >
-        <v-list-item
-          :title="t('api.consulta')"
-        >
-          <template v-slot:prepend>
-            <div class="pe-4">
-              <v-icon color="primary" size="x-large"></v-icon>
-            </div>
-          </template>
+      </v-banner>
+    </v-col>
+    <v-col cols="12" sm="8" md="7" lg="6">
+      <v-form class="pa-md-6 pa-4">
+        <v-container>
+          <v-row>
+            <v-col cols="12" sm="6" order="2" order-sm="1"
+              ><h6 class="text-h4">{{ $t("login.bienvenido") }}</h6></v-col
+            >
+            <v-col cols="12" sm="6" order="1" order-sm="2">
+              <v-img src="@/assets/images/logo.png"></v-img>
+            </v-col>
+          </v-row>
+          <v-row justify="center">
+            <v-col cols="12">
+              <p>{{ $t("login.mensaje") }}</p>
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                :label="$t('login.usuario') + ':'"
+                v-model="form.nickname"
+                variant="underlined"
+                :error-messages="v$.nickname.$errors.map((e) => e.$message)"
+                @blur="v$.nickname.$touch"
+                @input="v$.nickname.$touch"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                v-model="form.password"
+                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                :type="show1 ? 'text' : 'password'"
+                :label="$t('login.contrasena') + ':'"
+                name="password"
+                counter
+                :error-messages="v$.password.$errors.map((e) => e.$message)"
+                variant="underlined"
+                @click:append="show1 = !show1"
+                @blur="v$.password.$touch"
+                @input="v$.password.$touch"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12">
+              <v-alert
+                v-model="error1"
+                density="compact"
+                :text="mensaje"
+                :title="$t('api.titulo_error')"
+                type="warning"
+                closable
+              ></v-alert>
+            </v-col>
+            <v-col cols="12" sm="6" style="text-align: center">
+              <v-btn
+                color="#ff0023ff"
+                rounded="xl"
+                size="large"
+                @click="login(v$)"
+              >
+                {{ $t("login.ingresar") }}
+              </v-btn>
+            </v-col>
+            <v-col cols="12" sm="6" style="text-align: center">
+              <v-btn
+                rounded="xl"
+                size="large"
+                class="fondoverde"
+                @click="router.push('/register')"
+              >
+                {{ $t("login.registrarse") }}
+              </v-btn>
+            </v-col>
+            <v-col cols="12" style="text-align: center" class="ma-3">
+              <a @click="router.push('/recuperar')">{{
+                $t("login.olvido")
+              }}</a></v-col
+            >
+            <v-col cols="5" align-self="center">
+              <v-img src="@/assets/images/logo2.png" width="200"></v-img>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-form>
+    </v-col>
+  </v-row>
 
-          <template v-slot:append>
-            <v-progress-circular
-              color="primary"
-              indeterminate="disable-shrink"
-              size="16"
-              width="2"
-            ></v-progress-circular>
-          </template>
-        </v-list-item>
-      </v-list>
-    </v-dialog>
+  <v-dialog v-model="dialog" max-width="320" persistent>
+    <v-list class="py-2" color="primary" elevation="12" rounded="lg">
+      <v-list-item :title="t('api.consulta')">
+        <template v-slot:prepend>
+          <div class="pe-4">
+            <v-icon color="primary" size="x-large"></v-icon>
+          </div>
+        </template>
 
+        <template v-slot:append>
+          <v-progress-circular
+            color="primary"
+            indeterminate="disable-shrink"
+            size="16"
+            width="2"
+          ></v-progress-circular>
+        </template>
+      </v-list-item>
+    </v-list>
+  </v-dialog>
 </template>
 
 <script setup>
-  import { useVuelidate } from '@vuelidate/core'
-  import { required, minLength ,helpers} from '@vuelidate/validators'
-  import { reactive,ref } from 'vue'
-  import axiosInstance from '@/plugins/axios';
-  import { useRouter, useRoute } from 'vue-router'
-  import { useDisplay } from 'vuetify'
-  import { useI18n } from 'vue-i18n';
+import { useVuelidate } from "@vuelidate/core";
+import { required, minLength, helpers } from "@vuelidate/validators";
+import { reactive, ref } from "vue";
+import axiosInstance from "@/plugins/axios";
+import { useRouter, useRoute } from "vue-router";
+import { useDisplay } from "vuetify";
+import { useI18n } from "vue-i18n";
 
-  const router = useRouter()
-  const route = useRoute()
+const curso = import.meta.env.VITE_CURSO;
+console.log("curso: " + curso);
+const router = useRouter();
+const route = useRoute();
 const { t } = useI18n();
-   localStorage.removeItem('token');
-   localStorage.removeItem('progreso');
+localStorage.removeItem("token");
+localStorage.removeItem("progreso");
 
-  var show1=ref(false)
-  var error1=ref(false)
-  var mensaje=ref('')
-  var dialog=ref(false)
+var show1 = ref(false);
+var error1 = ref(false);
+var mensaje = ref("");
+var dialog = ref(false);
 
-  var inicio={
-    nickname: '',
-    password:''
-  }
+var inicio = {
+  nickname: "",
+  password: "",
+};
 
-  var form=reactive({
-    ...inicio,
-  })
+var form = reactive({
+  ...inicio,
+});
 
-  const rules={
-    nickname:{required: helpers.withMessage(t('validation.required'), required)},
-    password:{required: helpers.withMessage(t('validation.required'), required),minLength: helpers.withMessage(t('validation.min',{ length: '8' }),minLength(8))}
-  }
+const rules = {
+  nickname: {
+    required: helpers.withMessage(t("validation.required"), required),
+  },
+  password: {
+    required: helpers.withMessage(t("validation.required"), required),
+    minLength: helpers.withMessage(
+      t("validation.min", { length: "8" }),
+      minLength(8),
+    ),
+  },
+};
 
-   var v$ = useVuelidate(rules, form)
+var v$ = useVuelidate(rules, form);
 
-    //return { form, v$ }
+//return { form, v$ }
 
-    const login = async (formulario) => {
-      const isFormCorrect = await formulario.$validate();
+const login = async (formulario) => {
+  const isFormCorrect = await formulario.$validate();
 
-      // Si el formulario no es válido, no continúa
-      if (!isFormCorrect) return;
+  // Si el formulario no es válido, no continúa
+  if (!isFormCorrect) return;
 
-      // Mostrar el diálogo de carga
-        dialog.value = true;
+  // Mostrar el diálogo de carga
+  dialog.value = true;
 
-      try {
-        const response = await axiosInstance.post('login', form);
+  try {
+    const response = await axiosInstance.post("login", form);
 
-        if (response.data.access_token) {
-          localStorage.token = response.data.access_token;
-          if (response.data.restart === "1") {
-            localStorage.changed = 1;
-            router.push('/actualizar');
-          } else {
-            if (response.data.Inactivo === 1) {
-              router.push('/dashboard');
-            } else {
-              router.push('/inicio');
-            }
-          }
+    if (response.data.access_token) {
+      localStorage.token = response.data.access_token;
+      if (response.data.restart === "1") {
+        localStorage.changed = 1;
+        router.push("/actualizar");
+      } else {
+        if (response.data.Inactivo === 1) {
+          router.push("/dashboard");
+        } else {
+          router.push("/inicio");
         }
-
-        // Aquí ` this. sigue siendo el contexto del componente Vue
-          dialog.value = false;
-        console.log("Recurso creado con éxito:", response.data);
-      } catch (error) {
-        if (error.response) {
-          mensaje.value = error.response.data.mensaje ||  t('api.error');
-            error1.value = true;
-          console.log(  error.response.data.mensaje);
-        }
-          dialog.value = false;
       }
-    };
+    }
 
-  /*async login(formulario, todo) {
+    // Aquí ` this. sigue siendo el contexto del componente Vue
+    dialog.value = false;
+    console.log("Recurso creado con éxito:", response.data);
+  } catch (error) {
+    if (error.response) {
+      mensaje.value = error.response.data.mensaje || t("api.error");
+      error1.value = true;
+      console.log(error.response.data.mensaje);
+    }
+    dialog.value = false;
+  }
+};
+
+/*async login(formulario, todo) {
 
       const isFormCorrect = await formulario.$validate()
       // you can show some extra alert to the user or just leave the each field to show it's `$errors`.
@@ -219,8 +254,5 @@ const { t } = useI18n();
     });
   }*/
 
-  const {  smAndUp,lgAndUp } = useDisplay()
-
-
-
+const { smAndUp, lgAndUp } = useDisplay();
 </script>
