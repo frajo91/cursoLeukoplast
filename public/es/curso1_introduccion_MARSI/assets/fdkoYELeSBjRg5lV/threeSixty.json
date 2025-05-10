@@ -1,0 +1,27 @@
+{
+  "version": "3.77.30587.0",
+  "course_id": "6lalvYU2kRd_course_id",
+  "title": "Riskfactors_new",
+  "thumbnail": "story_content/thumbnail.jpg",
+  "scenes": [
+    {
+      "title": "Untitled Scene"
+    }
+  ],
+  "slides": [
+    {
+      "id": "6RmECeSt8sZ",
+      "title": "Drag and Drop",
+      "scene_index": "1.1"
+    }
+  ],
+  "player": {
+    "name": "unified",
+    "width": 1640,
+    "height": 1100
+  },
+  "stage": {
+    "width": 1620,
+    "height": 1080
+  }
+}
