@@ -315,12 +315,12 @@ const messages = {
       1: {
         titulo: "Introdução a MARSI",
         modulos: "5",
-        url: "./es/curso1_introduccion_MARSI/index.html",
+        url: "./pt/curso1_introduccion_MARSI/index.html",
       },
       2: {
         titulo: "Prevention and treatment of MARSI",
         modulos: "5",
-        url: "./es/curso2_Prevencion_MARSI/index.html",
+        url: "./pt/curso2_Prevencion_MARSI/index.html",
       },
     },
     login: {

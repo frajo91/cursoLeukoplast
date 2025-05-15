@@ -9,7 +9,20 @@ import axios from "axios";
 // Obtener la ruta base completa dinámicamente
 const getFullBaseUrl = () => {
   const base = import.meta.env.BASE_URL || "/";
-  return `${window.location.origin}/Cursos/IntroduccionMarsiServicio/api/`;
+  const curso=import.meta.env.VITE_CURSO;
+  switch(curso){
+  case '1':
+    return base+import.meta.env.VITE_RUTA_API_1;
+    //return import.meta.env.VITE_RUTA_API_1;
+    break;
+  case '2':
+    return base+import.meta.env.VITE_RUTA_API_2;
+    //return import.meta.env.VITE_RUTA_API_2;
+    break;
+  }
+
+
+  //return `${window.location.origin}/Cursos/IntroduccionMarsiServicio/api/`;
   //return `${window.location.origin}/Cursos/PrevencionMarsiServicio/api/`;
 };
 //leasigno a RUTA_SSRVIDOR el valor de getFullBaseUrl()
