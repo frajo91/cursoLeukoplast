@@ -68,8 +68,8 @@ watch(
 
 .fondoimagen {
   /*background-image: url(@/assets/images/login.png);*/
-  background-image: url(@/assets/images/MARSI-INTRODUCCION.jpg);
-  /*background-image: url(@/assets/images/Leukoplast-Leukomed-Skin-Sensitive-B2C-Website-Lifestyle-1000x1000px_mirrored.png);*/
+  /*background-image: url(@/assets/images/MARSI-INTRODUCCION.jpg);*/
+  background-image: url(@/assets/images/Leukoplast-Leukomed-Skin-Sensitive-B2C-Website-Lifestyle-1000x1000px_mirrored.png);
   background-size: cover;
   min-height: 20vh;
 }

@@ -9,7 +9,7 @@ import { fileURLToPath, URL } from "node:url";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/IntroduccionMarsi/",
+  base: "/BR/curso2/",
   build: {
     outDir: "dist",
     assetsDir: "./",

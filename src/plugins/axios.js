@@ -12,12 +12,12 @@ const getFullBaseUrl = () => {
   const curso=import.meta.env.VITE_CURSO;
   switch(curso){
   case '1':
-    return base+import.meta.env.VITE_RUTA_API_1;
-    //return import.meta.env.VITE_RUTA_API_1;
+    //return base+import.meta.env.VITE_RUTA_API_1;
+    return import.meta.env.VITE_RUTA_API_1;
     break;
   case '2':
-    return base+import.meta.env.VITE_RUTA_API_2;
-    //return import.meta.env.VITE_RUTA_API_2;
+    //return base+import.meta.env.VITE_RUTA_API_2;
+    return import.meta.env.VITE_RUTA_API_2;
     break;
   }
 
@@ -31,12 +31,20 @@ const RUTA_SERVIDOR = getFullBaseUrl();
 // Función para obtener el token desde localStorage
 const getToken = () => localStorage.getItem("token");
 
+// Detectar el idioma del navegador
+const browserLanguage = navigator.language || navigator.userLanguage; // Puede devolver un valor como 'en-US', 'es-ES', etc.
+
+// Extraer el idioma base (por ejemplo, 'en', 'es', etc.)
+const language = browserLanguage.split("-")[0];
+
 localStorage.setItem("base", RUTA_SERVIDOR);
 // Crear la instancia de axios
 const axiosInstance = axios.create({
   baseURL: RUTA_SERVIDOR,
   headers: {
-    Accept: "application/json",
+    'Accept': "application/json",
+    'Accept-Language':"pt",
+    'Content-Type': 'application/json'
   },
 });
 

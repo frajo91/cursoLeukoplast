@@ -34,7 +34,7 @@ console.log(language);
 // Composables
 const i18n = createI18n({
   legacy: false, // Vuetify does not support the legacy mode of vue-i18n
-  locale: language,
+  locale: "pt",
   fallbackLocale: "pt",
   messages,
 });
